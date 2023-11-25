@@ -1,0 +1,138 @@
+body {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0px;
+  font-size: 1em;
+  background-image: linear-gradient(45deg, #701313 0%, #08895e 100%);
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+  font-size: 420%;
+}
+
+h3 {
+  font-size: 150%;
+  margin: 0;
+  margin-top: 10px;
+
+}
+
+.active {
+  position: relative;
+  display: block;
+  width: 75vw;
+  max-width: 800px;
+  max-height: 100vh;
+  background-color: #aef9d7;
+  border-radius: 10px;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.rules ul {
+  margin: 0;
+}
+
+.rules li {
+  text-align: left;
+}
+
+.rules p {
+  margin-bottom: 0;
+}
+
+.agreement {
+  padding-bottom: 10px;
+}
+
+.inactive, .hide {
+  display: none;
+}
+
+#ssform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ssform .input, .info {
+  padding: .5rem 0;
+}
+
+.key {
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.back-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none; /* Remove background */
+  border: none; /* Remove border if any */
+  cursor: pointer; /* Change cursor on hover if needed */
+}
+
+.back-button ion-icon {
+  font-size: 2em; /* Adjust the font size for a larger icon */
+  opacity: 0.7; /* Set opacity for a faded effect */
+}
+
+/* Style for Christmas-themed buttons */
+button:not(.back-button) {
+  background-color: #dc3545; /* Red background color */
+  color: #fff; /* White text color */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+button:not(.back-button):before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('img/snowflake.png'); /* Replace with the path to your snowflake image */
+  background-size: 500px; /* Adjust the size of the snowflake */
+  opacity: 0.2;
+  pointer-events: none; /* Allow clicks to go through the snowflake to the button */
+}
+
+button:not(.back-button):hover {
+  background-color: #28a745; /* Green background color on hover */
+}
+
+/* Style for menu buttons */
+.menu {
+  display: flex;
+  justify-content: space-around; /* Adjust as needed (space-between, space-evenly, etc.) */
+}
+
+.menu button {
+  width: 100%;
+  max-width: 200px; /* Adjust the maximum width as needed */
+  background-color: #dc3545; /* Red background color */
+  color: #fff; /* White text color */
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px; /* Adjust as needed for spacing between buttons */
+}
+
+.menu button:hover {
+  background-color: #28a745; /* Green background color on hover */
+}
