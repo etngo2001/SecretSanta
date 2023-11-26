@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('header') -%>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
-  <title>Secret Santa 2023</title>
-</head>
-
-<body>
   <section class="welcome active">
     <h1>WELCOME TO</h1>
     <h1>SECRET SANTA 2023!!</h1>
@@ -26,7 +16,7 @@
         <li>Feel free to type as much or little detail into your wishlist or link directly to your wish.</li>
         <li>Please list at least 1 wishlist item and no more than 3.</li>
       </ul>
-      <p>
+      <p> 
         Failure to comply to any and all of the rules will result in forfeiture of user's gift to Eugene Ngo.
       </p>
       <div class="agreement">
@@ -76,7 +66,7 @@
         <input type="text" id="wish3" name="wish3" placeholder="but no more than 3" autocomplete="off">
       </div>
       <div class="input">
-        <button id="form-submit-button">Submit</button>
+        <button id="form-submit-button" >Submit</button>
       </div>
     </form>
     <div class="ugk hide">
@@ -126,7 +116,5 @@
       </div>
     </div>
   </section>
-  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-</body>
 
-</html>
+  <%- include('footer') -%>

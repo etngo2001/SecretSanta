@@ -20,7 +20,24 @@ app.get("/", (req, res) => {
     console.log('rendering index page');
 })
 
-app.post("/send-list")
+app.get("/guessSS", (req, res) => {
+    res.render('guessSS');
+    console.log('rendering Guess Secret Santa page');
+})
+
+app.post("/send-list", (req, res) => { //triggered on ssform when they submit form, need to run check before doing updating json form
+    req
+})
+
+//TODO:
+// MOVE TO SS FORM
+// MOVE TO VIEW YOUR GIFTEE
+    // FUNCTION FOR KEY CHECK/PASSWORD CHECK ON THE VIEW YOUR GIFTEE
+// MOVE TO GUESS YOUR SS FORM
+    // FUNCTION FOR KEY CHECK/PASSWORD CHECK WHEN GUESSING YOUR SS
+// FORM HANDLING - WHEN THEY SUBMIT THEIR FORM, TAKE THE DATA IN AND SAVE IT TO THE JSON
+
+
 
 app.listen(PORT, () => {
     console.log(`Running on http://localhost:${PORT}`)
