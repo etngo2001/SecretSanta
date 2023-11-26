@@ -58,8 +58,51 @@ app.post("/searchGiftee", (req, res) => {
   }
 });
 
+app.get("/searchGiftee", (req, res) => {
+    if (new Date() < new Date("2023-11-24")) {
+        res.render("time-gate");
+      } else {
+        // read the json file and collect the names
+        fs.readFile("SSList.json", (error, data) => {
+          if (error) {
+            console.log(error);
+            return;
+          }
+          let list = JSON.parse(data);
+          let names = list.map((entry) => entry.name);
+          console.log(names);
+          // send that object over to searchGiftee
+          res.render("searchGiftee", { data: names });
+          console.log("rendering searchGiftee page");
+        });
+      }
+})
+
 app.post("/SSLookup", (req, res) => {
     //do lookup. if found, else return to the page
+    let match = new Boolean(false);
+    fs.readFile("SSList.json", (error, data) => {
+        if (error) {
+          console.log(error);
+          return;
+        }
+        let JSONlist = JSON.parse(data);
+
+        for(let i = 0; i < JSONlist.length; i++) {
+            if(JSONlist[i].name == req.body.user && JSONlist[i].key == req.body.key) {
+                match = new Boolean(true);
+                console.log("Match found")
+                break;
+            }
+        }
+      });
+    if(match == true) {
+        res.render("displayGiftee");
+    } else {
+        //if not, redirect to searchGiftee
+        res.redirect("/searchGiftee?=keyFound" + match);
+    }
+    
 })
 
 app.post("/submit-list", (req, res) => {
@@ -112,8 +155,6 @@ app.post("/submit-list", (req, res) => {
   });
 });
 
-
-//redirects:
 app.get("/confirmation", (req, res) => {
   res.render("confirmation", { key: req.query.key });
 });
