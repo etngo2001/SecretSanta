@@ -32,20 +32,16 @@
     </p>
   <form method="POST">
     <div class="agreement">
-      <input type="checkbox" id="agreedge" name="agreedge" autocomplete="off" val>
+      <input type="checkbox" id="agreedge" name="agreedge" autocomplete="off" required>
       I acknowledge and agree to all the rules listed above.
     </div>
   <div class="menu">
-    <button formaction="/SSform" id="to-form">
+    <button formaction="/SSForm" class="menu-button" id="to-form">
       <p>To Fill Out The Form</p>
       <p>Press Here</p>
     </button>
-    <button formaction="/viewSS" id="to-target">
-      <p>To View Your Target</p>
-      <p>Press Here</p>
-    </button>
-    <button formaction="/guessSS" id="to-ss">
-      <p>To Guess Your Secret Santa</p>
+    <button formaction="/searchGiftee" class="menu-button" id="to-target">
+      <p>To View Your Giftee</p>
       <p>Press Here</p>
     </button>
   </div>

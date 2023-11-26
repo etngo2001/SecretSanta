@@ -1,0 +1,24 @@
+<%- include('header') -%>
+<section class="view">
+  <%- include('back-button') -%>
+
+  <h2>Please input your name and key:</h2>
+  <form method="post">
+    <div class="info-prompt">
+      <div class="info">
+        <label for="user">Select Your Name:</label>
+        <select name="user" id="info-view-user">
+          <% data.forEach(function(name) { %>
+            <option value="<%= name %>"><%= name %></option>
+          <% }); %>
+        </select>
+        <label for="key">Enter Your Key:</label>
+        <input type="text" id="info-view-key" name="key" required />
+      </div>
+      <button class="submit-button" formaction="SSLookup">Submit</button>
+    </div>
+  </form>
+  
+</section>
+
+<%- include('footer') -%>

@@ -51,6 +51,14 @@ section {
   padding-bottom: 10px;
 }
 
+.beeger {
+  font-size: 2rem;
+}
+
+.strong {
+  font-weight: bold;
+}
+
 .hide {
   display: none;
 }
@@ -64,11 +72,6 @@ section {
 
 .ssform .input, .info {
   padding: .5rem 0;
-}
-
-.key {
-  font-weight: bold;
-  font-size: 40px;
 }
 
 .back-button {
@@ -131,6 +134,12 @@ button:not(.back-button):hover {
   font-size: 16px;
   cursor: pointer;
   margin: 5px; /* Adjust as needed for spacing between buttons */
+  min-height: 5rem;
+  min-width: 10rem;
+}
+
+.menu button p {
+  margin: 0;
 }
 
 .menu button:hover {

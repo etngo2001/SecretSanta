@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Antoinette Ngo",
+    "origin": "family3",
+    "key": "5bmtF",
+    "wishlist": { "wish1": "Legos", "wish2": "Flowers", "wish3": "" }
+  },
+  {
+    "name": "Edward",
+    "origin": "family5",
+    "key": "nN9yR",
+    "wishlist": {
+      "wish1": "League of legos",
+      "wish2": "Ipod mini",
+      "wish3": "idk"
+    }
+  },
+  {
+    "name": "Elle",
+    "origin": "family1",
+    "key": "IrYQP",
+    "wishlist": { "wish1": "Baby stuff", "wish2": "Toys", "wish3": "IDK" }
+  }
+]
