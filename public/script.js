@@ -36,40 +36,6 @@
     }, 300); // Change colors every 300 milliseconds (1 second)
   }
 
-  /**
- * Init function to call switchView
- * No parameters
- * No return value
- */
-  function switchViewInit(buttonID) {
-    if (!id("agreedge").checked) {
-      alert("Please acknowledge and agree before continuing.");
-      return;
-    }
-    if (buttonID === "to-form") {
-      switchView(".form");
-    }
-    if (buttonID === "to-target") {
-      switchView(".view");
-    }
-    if (buttonID === "to-ss") {
-      switchView(".guess");
-    }
-  }
-
-  /**
-   * Switches the view from introduction to options to response and back to introduction in
-   * that order
-   * @param {object} card - DOM object that specifies which view to switch to
-   * No return value
-   */
-  function switchView(className) {
-    qs(".active").classList.add("inactive");
-    qs(".active").classList.remove("active");
-    qs(className).classList.remove("inactive")
-    qs(className).classList.add("active")
-  }
-
   function switchHide(curr, className) {
     qs(curr).classList.add("hide")
     qs(className).classList.remove("hide")
@@ -82,13 +48,6 @@
      */
   function submitForm() {
     event.preventDefault();
-
-    // Get form data
-    const fullName = id('name').value;
-    const family = id('origin').value;
-    const wish1 = id('wish1').value;
-    const wish2 = id('wish2').value;
-    const wish3 = id('wish3').value;
 
     // Guard to ensure that the necessary fields are filled
     if (!fullName || !family || !wish1) {

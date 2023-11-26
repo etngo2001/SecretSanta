@@ -51,7 +51,7 @@ section {
   padding-bottom: 10px;
 }
 
-.inactive, .hide {
+.hide {
   display: none;
 }
 
