@@ -1,132 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('header') -%>
+<section class="welcome">
+  <h1>WELCOME TO</h1>
+  <h1>SECRET SANTA 2023!!</h1>
+  <div class="rules">
+    <h3>Rules and Acknowledgements</h3>
+    <ul>
+      <li>Everyone who wants to participate must fill out a form.</li>
+      <li>Do not fill out the form multiple times.</li>
+      <li>
+        Upon form completion, you will be entered into the Secret Santa System
+        and a unique key will be generated for you.
+      </li>
+      <li>
+        Secret Santas will be randomised and no preferences or choices will be
+        taken into consideration.
+      </li>
+      <li>
+        Do not spoil the fun and reveal who your giftee is before the time
+        comes.
+      </li>
+      <li>All wishlist items must be within the $50 limit.</li>
+      <li>
+        Feel free to type as much or little detail into your wishlist or link
+        directly to your wish.
+      </li>
+      <li>Please list at least 1 wishlist item and no more than 3.</li>
+    </ul>
+    <p>
+      Failure to comply to any and all of the rules will result in forfeiture of
+      user's gift to Eugene Ngo.
+    </p>
+  <form method="POST">
+    <div class="agreement">
+      <input type="checkbox" id="agreedge" name="agreedge" autocomplete="off" required>
+      I acknowledge and agree to all the rules listed above.
+    </div>
+  <div class="menu">
+    <button formaction="/SSForm" class="menu-button" id="to-form">
+      <p>To Fill Out The Form</p>
+      <p>Press Here</p>
+    </button>
+    <button formaction="/searchGiftee" class="menu-button" id="to-target">
+      <p>To View Your Giftee</p>
+      <p>Press Here</p>
+    </button>
+  </div>
+  </form>
+</section>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
-  <title>Secret Santa 2023</title>
-</head>
-
-<body>
-  <section class="welcome active">
-    <h1>WELCOME TO</h1>
-    <h1>SECRET SANTA 2023!!</h1>
-    <div class="rules">
-      <h3>Rules and Acknowledgements</h3>
-      <ul>
-        <li>Everyone who wants to participate must fill out a form.</li>
-        <li>Do not fill out the form multiple times.</li>
-        <li>Upon form completion, you will be entered into the Secret Santa System and a unique key will be generated
-          for you.</li>
-        <li>Secret Santas will be randomised and no preferences or choices will be taken into consideration.</li>
-        <li>Do not spoil the fun and reveal who your Secret Santa is before the time comes.</li>
-        <li>All wishlist items must be within the $60 limit.</li>
-        <li>Feel free to type as much or little detail into your wishlist or link directly to your wish.</li>
-        <li>Please list at least 1 wishlist item and no more than 3.</li>
-      </ul>
-      <p>
-        Failure to comply to any and all of the rules will result in forfeiture of user's gift to Eugene Ngo.
-      </p>
-      <div class="agreement">
-        <input type="checkbox" id="agreedge" name="agreedge" autocomplete="off"> I acknowledge and agree to all the
-        rules listed above.
-      </div>
-    </div>
-    <div class="menu">
-      <button id="to-form">
-        <p>To Fill Out The Form</p>
-        <p>Press Here</p>
-      </button>
-      <button id="to-target">
-        <p>To View Your Target</p>
-        <p>Press Here</p>
-      </button>
-      <button id="to-ss">
-        <p>To Guess Your Secret Santa</p>
-        <p>Press Here</p>
-      </button>
-    </div>
-  </section>
-  <section class="form inactive">
-    <button class="back-button"><ion-icon name="close"></ion-icon></button>
-    <h2>Secret Santa Form</h2>
-    <form class="ssform">
-      <div class="input">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="First and Last Name Please" size="25" maxlength="25"
-          autocomplete="off" required>
-      </div>
-      <div class="input">
-        <label for="origin">Select your family:</label>
-        <select name="origin" id="origin" autocomplete="off" required>
-          <option value=""></option>
-          <option value="family1">Hung Ngo & Van Vuong</option>
-          <option value="family2">Emily Ngo & Phu Do</option>
-          <option value="family3">Anthony Ngo & Diane Vo</option>
-          <option value="family4">Jeannie Ngo & Hung Tong</option>
-          <option value="family5">Lynn Ngo & Chris Lim</option>
-        </select>
-      </div>
-      <div class="input">
-        <label for="wishlist">Wishlist:</label>
-        <input type="text" id="wish1" name="wish1" placeholder="Please enter at least 1" autocomplete="off" required>
-        <input type="text" id="wish2" name="wish2" placeholder="wishlist item" autocomplete="off">
-        <input type="text" id="wish3" name="wish3" placeholder="but no more than 3" autocomplete="off">
-      </div>
-      <div class="input">
-        <button id="form-submit-button">Submit</button>
-      </div>
-    </form>
-    <div class="ugk hide">
-      <p>Your key is:</p>
-      <p class="key"></p>
-      <p>Please make sure to save this key for later use. DO NOT LOSE IT!</p>
-    </div>
-  </section>
-  <section class="view inactive">
-    <button class="back-button"><ion-icon name="close"></ion-icon></button>
-    <h2>Please input your name and key:</h2>
-    <div class="info-prompt">
-      <div class="info">
-        <label for="user">Select Your Name:</label>
-        <select name="user" id="info-view-user"></select>
-        <label for="key">Enter Your Key:</label>
-        <input type="text" id="info-view-key" name="key" required>
-      </div>
-      <button class="submit-button">Submit</button>
-    </div>
-    <div class="info-display hide">
-      <!-- Add h2 "You are _'s Secret Santa"
-      Display Wish List -->
-    </div>
-  </section>
-  <section class="guess inactive">
-    <button class="back-button"><ion-icon name="close"></ion-icon></button>
-    <h2>Guess Your Secret Santa:</h2>
-    <div class="guess-screen">
-      <div class="info">
-        <label for="user">Select Your Name:</label>
-        <select name="user" id="info-guess-user"></select>
-        <label for="key">Enter Your Key:</label>
-        <input type="text" id="info-guess-key" name="key" required>
-      </div>
-      <label for="user">Select Your Guess:</label>
-      <select name="user" id="guess-user"></select>
-      <button class="submit-button">Submit</button>
-    </div>
-    <div class="answer-screen">
-      <div class="correct hide">
-        <h3>You were correct!</h3>
-      </div>
-      <div class="incorrect hide">
-        <h3>You were incorrect! Better luck next year!</h3>
-        <button class="answer">See Answer</button>
-      </div>
-    </div>
-  </section>
-  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-</body>
-
-</html>
+<%- include('footer') -%>

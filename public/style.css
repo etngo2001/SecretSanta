@@ -23,7 +23,7 @@ h3 {
 
 }
 
-.active {
+section {
   position: relative;
   display: block;
   width: 75vw;
@@ -51,7 +51,15 @@ h3 {
   padding-bottom: 10px;
 }
 
-.inactive, .hide {
+.beeger {
+  font-size: 2rem;
+}
+
+.strong {
+  font-weight: bold;
+}
+
+.hide {
   display: none;
 }
 
@@ -64,11 +72,6 @@ h3 {
 
 .ssform .input, .info {
   padding: .5rem 0;
-}
-
-.key {
-  font-weight: bold;
-  font-size: 40px;
 }
 
 .back-button {
@@ -131,8 +134,27 @@ button:not(.back-button):hover {
   font-size: 16px;
   cursor: pointer;
   margin: 5px; /* Adjust as needed for spacing between buttons */
+  min-height: 5rem;
+  min-width: 10rem;
+}
+
+.menu button p {
+  margin: 0;
 }
 
 .menu button:hover {
   background-color: #28a745; /* Green background color on hover */
+}
+
+.wishlist {
+  text-align: left;
+  padding: 0 2rem;
+}
+
+.wishlistlist {
+  margin: 0 0 2rem 0;
+}
+
+.giftee {
+  margin: 2rem 0 0 0;
 }
