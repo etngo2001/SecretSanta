@@ -33,20 +33,34 @@ app.post("/SSForm", (req, res) => {
 })
 
 app.post("/viewSS", (req, res) => {
+    if(req.body.agreedge) { //checks to see if user is able to move onto the view giftee page
+        res.render('SSForm');
+        console.log('rendering SSForm page');
+    }
     res.render('viewSS');
     console.log('rendering ViewSS page');
 })
 
 app.post("/guessSS", (req, res) => {
+    if(req.body.agreedge) { //checks to see if user is able to move onto the guess your ss page
+        res.render('SSForm');
+        console.log('rendering SSForm page');
+    }
     res.render('guessSS');
     console.log('rendering Guess Secret Santa page');
 })
 
-
-
 app.post("/submit-list", (req, res) => { //triggered on ssform when they submit form, need to run check before doing updating json form
-    console.log(req.body.name);
-    console.log("form submitted")
+    let data = {
+        "name": req.body.name,
+        "origin": req.body.origin,
+        "wishlist": {
+            wish1:req.body.wish1,
+            wish2:req.body.wish2,
+            wish3:req.body.wish3
+        }
+    }
+    console.log(data)
 })
 
 //TODO:
@@ -56,7 +70,7 @@ app.post("/submit-list", (req, res) => { //triggered on ssform when they submit 
 // MOVE TO GUESS YOUR SS FORM
     // FUNCTION FOR KEY CHECK/PASSWORD CHECK WHEN GUESSING YOUR SS
 // FORM HANDLING - WHEN THEY SUBMIT THEIR FORM, TAKE THE DATA IN AND SAVE IT TO THE JSON
-
+// CREATE A PAGE THAT CONFIRMS THAT THE LIST HAS BEEN received and present the user their key
 
 
 app.listen(PORT, () => {
