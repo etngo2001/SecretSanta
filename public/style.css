@@ -145,3 +145,16 @@ button:not(.back-button):hover {
 .menu button:hover {
   background-color: #28a745; /* Green background color on hover */
 }
+
+.wishlist {
+  text-align: left;
+  padding: 0 2rem;
+}
+
+.wishlistlist {
+  margin: 0 0 2rem 0;
+}
+
+.giftee {
+  margin: 2rem 0 0 0;
+}
