@@ -70,7 +70,6 @@ app.get("/searchGiftee", (req, res) => {
           }
           let list = JSON.parse(data);
           let names = list.map((entry) => entry.name);
-          console.log(names);
           // send that object over to searchGiftee
           res.render("searchGiftee", { data: names });
           console.log("rendering searchGiftee page");
@@ -96,7 +95,7 @@ app.post("/SSLookup", (req, res) => {
             }
         }
       });
-    if(match == true) {
+    if(match) {
         res.render("displayGiftee");
     } else {
         //if not, redirect to searchGiftee
