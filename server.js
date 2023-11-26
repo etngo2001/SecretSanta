@@ -6,7 +6,7 @@ var http = require('http');
 
 
 const PORT = 8080;
-const HOST = '0.0.0.0';
+// const HOST = '0.0.0.0';
 const app = express();
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -20,11 +20,8 @@ app.get("/", (req, res) => {
     console.log('rendering index page');
 })
 
-app.post("/", (req, res) => {
-    res.render('index');
-    console.log('rendering index page');
-})
+app.post("/send-list")
 
-app.listen(PORT, HOST, () => {
-    console.log(`Running on http://${HOST}:${PORT}`)
+app.listen(PORT, () => {
+    console.log(`Running on http://localhost:${PORT}`)
 })
