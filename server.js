@@ -19,9 +19,53 @@ app.get("/", (req, res) => {
   res.render("index");
   console.log("rendering index page");
 });
+
 app.post("/", (req, res) => {
   res.render("index");
   console.log("rendering index page");
+});
+
+app.get("/admin", (req, res) => {
+  res.render("admin");
+  console.log("rendering admin page")
+});
+
+app.post("/runAlgorithm", (req, res) => {
+  console.log("running algorithm")
+  // read the json file and collect the names
+  fs.readFile("Participants.json", (error, data) => {
+    if (error) {
+      console.log(error);
+      return;
+    }
+    let list = JSON.parse(data);
+    let names = list.map((entry) => entry.name);
+    let families = list.map((entry) => entry.origin);
+    console.log(names);
+    console.log(families);
+    const SSDic = names.reduce((acc, name, index) => {
+      acc[name] = families[index];
+      return acc;
+    }, {});
+
+    const shuffledNames = names.slice().sort(() => Math.random() - 0.5);
+
+    while (names.some((secretSanta, index) => secretSanta === shuffledNames[index] || SSDic[secretSanta] === SSDic[shuffledNames[index]])) {
+      shuffledNames.sort(() => Math.random() - 0.5);
+    }
+
+    const pairs = names.map((person, index) => ({ secretSanta: person, giftee: shuffledNames[index] }));
+
+    fs.writeFile("SSList.json", JSON.stringify(pairs), (err) => {
+      if (err) {
+        console.log("Failed to write updated data to file");
+        return;
+      }
+      console.log("Updated file successfully");
+    });
+  });
+  console.log("algorithm complete")
+  res.status(204).send(); //User stays on current page
 });
 
 app.post("/SSForm", (req, res) => {
@@ -40,7 +84,7 @@ app.post("/searchGiftee", (req, res) => {
       res.render("time-gate");
     } else {
       // read the json file and collect the names
-      fs.readFile("SSList.json", (error, data) => {
+      fs.readFile("Participants.json", (error, data) => {
         if (error) {
           console.log(error);
           return;
@@ -59,8 +103,49 @@ app.post("/searchGiftee", (req, res) => {
 });
 
 app.post("/SSLookup", (req, res) => {
-    //do lookup. if found, else return to the page
-})
+  //do lookup. if found, else return to the page
+  let match = new Boolean(false);
+  fs.readFile("Participants.json", (error, data) => {
+    if (error) {
+      console.log(error);
+      return;
+    }
+    let participantList = JSON.parse(data);
+
+    for (let i = 0; i < participantList.length; i++) {
+      if (participantList[i].name === req.body.user && participantList[i].key === req.body.key) {
+        fs.readFile("SSList.json", (error, data) => {
+          if (error) {
+            console.log(error);
+            return;
+          }
+
+          let dataList = JSON.parse(data);
+
+          dataList.forEach(function (secretSanta) {
+            if (secretSanta.secretSanta === participantList[i].name) {
+              console.log(secretSanta.giftee)
+              let person = secretSanta.giftee;
+              console.log(person);
+              for (let j = 0; j < participantList.length; j++) {
+                if (participantList[j].name === person) {
+                  res.render("displayGiftee", { data: [participantList[j].name, participantList[j].wishlist] });
+                }
+              }
+            }
+          })
+        })
+
+        console.log("Match found")
+        match = new Boolean(true)
+        break;
+      }
+    }
+  });
+  if (!match) {
+    res.redirect("/searchGiftee?=keyFound" + skip);
+  }
+});
 
 app.post("/submit-list", (req, res) => {
   const characters =
@@ -88,7 +173,7 @@ app.post("/submit-list", (req, res) => {
     },
   };
   console.log(newData);
-  fs.readFile("SSList.json", (error, data) => {
+  fs.readFile("Participants.json", (error, data) => {
     if (error) {
       console.log(error);
       return;
@@ -96,7 +181,7 @@ app.post("/submit-list", (req, res) => {
     let newList = JSON.parse(data);
     newList.push(newData);
 
-    fs.writeFile("SSList.json", JSON.stringify(newList), (err) => {
+    fs.writeFile("Participants.json", JSON.stringify(newList), (err) => {
       if (err) {
         console.log("Failed to write updated data to file");
         return;

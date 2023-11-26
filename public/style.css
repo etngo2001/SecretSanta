@@ -158,3 +158,31 @@ button:not(.back-button):hover {
 .giftee {
   margin: 2rem 0 0 0;
 }
+
+#da-button {
+  background: hsl(340deg 100% 32%);
+  border-radius: 12px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+}
+
+.da-button-text {
+  display: block;
+  padding: 12px 42px;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  background: hsl(345deg 100% 47%);
+  color: white;
+  transform: translateY(-6px);
+}
+
+#da-button:active .da-button-text {
+  transform: translateY(-2px);
+}
+
+.admin {
+  background-color: gray;
+  width: 15rem;
+}
