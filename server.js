@@ -79,7 +79,7 @@ app.post("/ssform", (req, res) => {
 app.post("/searchGiftee", (req, res) => {
   //checks to see if user is able to move onto the view searchGiftee page
   if (req.body.agreedge) {
-    if (new Date() < new Date("2023-11-03")) {
+    if (new Date() < new Date("2023-12-03")) {
       res.render("time-gate");
     } else {
       // read the json file and collect the names
@@ -99,26 +99,7 @@ app.post("/searchGiftee", (req, res) => {
   }
 });
 
-app.get("/searchGiftee", (req, res) => {
-    if (new Date() < new Date("2023-11-24")) {
-        res.render("time-gate");
-      } else {
-        // read the json file and collect the names
-        fs.readFile("SSList.json", (error, data) => {
-          if (error) {
-            console.log(error);
-            return;
-          }
-          let list = JSON.parse(data);
-          let names = list.map((entry) => entry.name);
-          // send that object over to searchGiftee
-          res.render("searchGiftee", { data: names });
-          console.log("rendering searchGiftee page");
-        });
-      }
-})
-
-app.post("/SSLookup", (req, res) => {
+app.post("/sslookup", (req, res) => {
   //do lookup. if found, else return to the page
   let match = new Boolean(false);
   fs.readFile("Participants.json", (error, data) => {
