@@ -51,6 +51,10 @@ section {
   padding-bottom: 10px;
 }
 
+.gate {
+  font-size: xx-large;
+}
+
 .beeger {
   font-size: 2rem;
 }
@@ -184,5 +188,6 @@ button:not(.back-button):hover {
 
 .admin {
   background-color: gray;
-  width: 15rem;
+  width: 20rem;
+  height: auto;
 }

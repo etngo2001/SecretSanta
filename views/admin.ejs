@@ -3,6 +3,16 @@
 <section class="admin">
   <%- include('back-button') -%>
   <form method="POST">
+    <input
+    type="text"
+    id="adminPassword"
+    name="adminPassword"
+    placeholder="Admin Password Required"
+    size="25"
+    maxlength="25"
+    autocomplete="off"
+    required
+  />
     <button formaction="/runAlgorithm" id="da-button">
       <span class="da-button-text">
         Do the thing
