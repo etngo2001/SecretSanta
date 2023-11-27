@@ -3,13 +3,13 @@
 <section>
   <%- include('back-button') -%>
   <h2>Secret Santa!</h2>
-  <p class="beeger">Your Giftee is <span class="strong"><>insert name</span>.</p>
+  <p class="beeger">Your Giftee is <span class="strong"><%= data[0] %></span>.</p>
   <div class="wishlist beeger">
-    <p class="giftee"><span class="strong"><>insert name</span> wishes for:</p>
+    <p class="giftee"><span class="strong"><%= data[0] %></span> wishes for:</p>
     <ul class="wishlistlist">
-      <li><span><>insert w1</span></li>
-      <li><span><>insert w2</span></li>
-      <li><span><>insert w3</span></li>
+      <li><span><%= data[1].wish1 %></span></li>
+      <li><span><%= data[1].wish2 %></span></li>
+      <li><span><%= data[1].wish3 %></span></li>
     </ul>
   </div>
 </section>
