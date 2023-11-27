@@ -99,6 +99,25 @@ app.post("/searchGiftee", (req, res) => {
   }
 });
 
+app.get("/searchGiftee", (req, res) => {
+    if (new Date() < new Date("2023-11-24")) {
+        res.render("time-gate");
+      } else {
+        // read the json file and collect the names
+        fs.readFile("SSList.json", (error, data) => {
+          if (error) {
+            console.log(error);
+            return;
+          }
+          let list = JSON.parse(data);
+          let names = list.map((entry) => entry.name);
+          // send that object over to searchGiftee
+          res.render("searchGiftee", { data: names });
+          console.log("rendering searchGiftee page");
+        });
+      }
+})
+
 app.post("/SSLookup", (req, res) => {
   //do lookup. if found, else return to the page
   let match = new Boolean(false);
@@ -139,6 +158,7 @@ app.post("/SSLookup", (req, res) => {
     res.redirect("/searchGiftee?=keyFound" + skip);
   }
 });
+
 
 app.post("/submit-list", (req, res) => {
   const characters =
@@ -185,8 +205,6 @@ app.post("/submit-list", (req, res) => {
   });
 });
 
-
-//redirects:
 app.get("/confirmation", (req, res) => {
   res.render("confirmation", { key: req.query.key });
 });
