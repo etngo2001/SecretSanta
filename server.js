@@ -5,7 +5,7 @@ const { name } = require("ejs");
 const fs = require("fs");
 var http = require("http");
 
-const PORT = 80;
+const PORT = 8080;
 const HOST = '0.0.0.0';
 const app = express();
 
@@ -190,6 +190,6 @@ app.get("/confirmation", (req, res) => {
   res.render("confirmation", { key: req.query.key });
 });
 
-app.listen(PORT, HOST, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Running on http://localhost:${PORT}`);
 });
