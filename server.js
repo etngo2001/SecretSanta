@@ -6,7 +6,7 @@ const fs = require("fs");
 var http = require("http");
 
 const PORT = 8080;
-// const HOST = '0.0.0.0';
+const HOST = '0.0.0.0';
 const app = express();
 
 const adminPass = "Ng0SecretS4nta23";
@@ -190,6 +190,6 @@ app.get("/confirmation", (req, res) => {
   res.render("confirmation", { key: req.query.key });
 });
 
-app.listen(PORT, () => {
-  console.log(`Running on http://localhost:${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`Server running on port ${PORT}`);
 });
