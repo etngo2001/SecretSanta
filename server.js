@@ -79,7 +79,7 @@ app.post("/ssform", (req, res) => {
 app.post("/searchGiftee", (req, res) => {
   //checks to see if user is able to move onto the view searchGiftee page
   if (req.body.agreedge) {
-    if (new Date() < new Date("2023-12-03")) {
+    if (new Date() < new Date("2023-12-13")) {
       res.render("time-gate");
     } else {
       // read the json file and collect the names
