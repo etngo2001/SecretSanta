@@ -3,7 +3,7 @@
   <%- include('back-button') -%>
 
   <h2>Secret Santa Form</h2>
-  <form class="ssform" method="post">
+  <form class="ssform" method="post" action="/submit-list">
     <div class="input">
       <label for="name">Name:</label>
       <input
@@ -17,6 +17,7 @@
         required
       />
     </div>
+
     <div class="input">
       <label for="origin">Select your family:</label>
       <select name="origin" id="origin" autocomplete="off" required>
@@ -28,6 +29,7 @@
         <option value="family5">Lynn Ngo & Chris Lim</option>
       </select>
     </div>
+
     <div class="input">
       <label for="wishlist">Wishlist:</label>
       <input
@@ -53,8 +55,9 @@
         autocomplete="off"
       />
     </div>
+
     <div class="input">
-      <button id="form-submit-button" formaction="/submit-list">Submit</button>
+      <button type="submit" id="form-submit-button">Submit</button>
     </div>
   </form>
 </section>
